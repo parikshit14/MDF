@@ -6,8 +6,7 @@ pip install .
 # Note this:
 #    1) runs examples to regenerate yaml/json...
 #    2) tests examples with simple_scheduler
-pytest -v -ra tests/interfaces/pytorch/*py
-pytest -v -ra tests/*py
+python -m pytest -ra -v
 
 cd examples/MDF
 
@@ -18,6 +17,19 @@ python abcd.py -run
 python arrays.py -run
 python states.py -run -nogui
 python abc_conditions.py -run
+
+## Test translations of MDF models to MDF_0
+
+cd translation
+
+python run_translated_ABCD.py
+python run_translated_FN.py
+python run_translated_simple.py
+python run_translated_Arrays.py
+python run_translated_abc_conditions.py
+python run_translated_states_json.py
+
+cd ..
 
 ## Test exporting to NeuroML
 
@@ -65,4 +77,6 @@ python addition.py
 
 cd ../../docs
 python generate.py
-cd -
+cd sphinx
+make html
+cd ../..
